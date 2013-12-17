@@ -2,9 +2,8 @@ CommonRegex
 ===========
 
 Find all times, dates, links, phone numbers, and emails in a string. 
-I did the hard work so you don'thave to. 
+I did the hard work so you don't have to. 
 
-Note that this module is English language / US specific.  
 
 Usage
 ------
