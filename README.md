@@ -2,7 +2,7 @@ CommonRegex
 ===========
 
 Find all times, dates, links, phone numbers, and emails in a string. 
-I did the hard work so you don't have to. 
+I did the hard work so you don't have to.
 
 
 Usage
@@ -29,5 +29,7 @@ Alternatively, you can generate a single CommonRegex instance and use it to pars
     >>> parser = CommonRegex()
     >>> parser.times("When are you free?  Do you want to meet up for coffee at 4:00?")
     ['4:00']
+    
+Please note that this module is currently English/US specific.
     
 
