@@ -57,7 +57,7 @@ class CommonRegex:
   @_strip
   def emails(self, text=None):
     text = text or self.text
-    email_regex = ur"([a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)"
+    email_regex = ur"([a-z0-9!#$%&'*+\/=?^_`{|}~-]+@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)"
     return re.findall(email_regex, text, re.IGNORECASE)
 
 if __name__ == "__main__":
