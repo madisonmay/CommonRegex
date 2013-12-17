@@ -39,7 +39,6 @@ class CommonRegex:
   @_strip
   def times(self, text=None):
     text = text or self.text
-    print text
     time_regex = ur'\d{1,2}:\d{2} ?(?:[ap]\.?m\.?)?|\d[ap]\.?m\.?'
     return re.findall(time_regex, text, re.IGNORECASE)
 
@@ -58,11 +57,11 @@ class CommonRegex:
   @_strip
   def emails(self, text=None):
     text = text or self.text
-    email_regex = ur'(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))'
+    email_regex = ur"([a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)"
     return re.findall(email_regex, text, re.IGNORECASE)
 
 if __name__ == "__main__":
-  parse = CommonRegex("8:00 5:00AM Jan 9th 2012 8/23/12 www.google.com http://hotmail.com (520) 820 7123, 1-230-241-2422 john.smith@gmail.com")
+  parse = CommonRegex("8:00 5:00AM Jan 9th 2012 8/23/12 www.google.com http://hotmail.com (520) 820 7123, 1-230-241-2422 john_smith@gmail.com")
   print parse.dates
   print parse.times
   print parse.phones
