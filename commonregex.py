@@ -12,6 +12,7 @@ class CommonRegex:
       self.phones   = self.phones()
       self.links    = self.links()
       self.emails   = self.emails()
+      self.ip       = self.ip()
 
   def _opt(self, regex):
     return ur'(?:' + regex + ur')?'
@@ -60,10 +61,17 @@ class CommonRegex:
     email_regex = ur"([a-z0-9!#$%&'*+\/=?^_`{|}~-]+@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)"
     return re.findall(email_regex, text, re.IGNORECASE)
 
+  @_strip 
+  def ip(self, text=None):
+    text = text or self.text
+    ip_regex = ur'[0-9]+(?:\.[0-9]+){3}'
+    return re.findall(ip_regex, text)
+
 if __name__ == "__main__":
-  parse = CommonRegex("8:00 5:00AM Jan 9th 2012 8/23/12 www.google.com http://hotmail.com (520) 820 7123, 1-230-241-2422 john_smith@gmail.com")
+  parse = CommonRegex("8:00 5:00AM Jan 9th 2012 8/23/12 www.google.com http://hotmail.com (520) 820 7123, 1-230-241-2422 john_smith@gmail.com 165.91.15.131")
   print parse.dates
   print parse.times
   print parse.phones
   print parse.links
   print parse.emails
+  print parse.ip
