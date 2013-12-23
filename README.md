@@ -33,5 +33,9 @@ Alternatively, you can generate a single CommonRegex instance and use it to pars
     ['4:00']
     
 Please note that this module is currently English/US specific.
+
+CommonRegex Ports:
+----------------------------------------
+[CommonRegexJS] (https://github.com/talyssonoc/CommonRegexJS)
     
 
