@@ -37,5 +37,6 @@ Please note that this module is currently English/US specific.
 CommonRegex Ports:
 ----------------------------------------
 [CommonRegexJS] (https://github.com/talyssonoc/CommonRegexJS)
-    
+
+[CommonRegexScala] (https://github.com/everpeace/CommonRegexScala)    
 
