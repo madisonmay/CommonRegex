@@ -13,6 +13,7 @@ class CommonRegex:
             self.links    = self.links()
             self.emails   = self.emails()
             self.ip       = self.ip()
+            self.money    = self.money()
 
     def _opt(self, regex):
         return u'(?:' + regex + u')?'
@@ -67,11 +68,18 @@ class CommonRegex:
         ip_regex = u'(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
         return re.findall(ip_regex, text)
 
+    @_strip
+    def money(self, text=None):
+        text = text or self.text
+        money_regexp = u"\$\s?[+-]?[0-9]{1,3}(?:,?[0-9])*(?:\.[0-9]{1,2})?"
+        return re.findall(money_regexp, text)
+
 if __name__ == "__main__":
-    parse = CommonRegex("8:00 5:00AM Jan 9th 2012 8/23/12 www.google.com http://hotmail.com (520) 820 7123, 1-230-241-2422 john_smith@gmail.com 127.0.0.1")
+    parse = CommonRegex("8:00 5:00AM Jan 9th 2012 8/23/12 www.google.com $4891.75 http://hotmail.com (520) 820 7123, 1-230-241-2422 john_smith@gmail.com 127.0.0.1")
     print(parse.dates)
     print(parse.times)
     print(parse.phones)
     print(parse.links)
     print(parse.emails)
     print(parse.ip)
+    print(parse.money)
