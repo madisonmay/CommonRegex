@@ -1,10 +1,20 @@
 CommonRegex
 ===========
 
-Find all times, dates, links, phone numbers, and emails in a string. 
+Find all times, dates, links, phone numbers, emails, ip addresses, and prices in a string. 
 I did the hard work so you don't have to.
 
 Pull requests welcome!
+
+Installation
+-------
+Install via pip
+
+    sudo pip install commonregex
+    
+or via setup.py
+
+    python setup.py install
 
 
 Usage
@@ -37,5 +47,8 @@ Please note that this module is currently English/US specific.
 CommonRegex Ports:
 ----------------------------------------
 [CommonRegexJS] (https://github.com/talyssonoc/CommonRegexJS)
-    
+
+[CommonRegexScala] (https://github.com/everpeace/CommonRegexScala)    
+
+[CommonRegexJava] (https://github.com/talyssonoc/CommonRegexJava)
 
