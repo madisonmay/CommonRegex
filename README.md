@@ -6,6 +6,16 @@ I did the hard work so you don't have to.
 
 Pull requests welcome!
 
+Installation
+-------
+Install via pip
+
+    sudo pip install commonregex
+    
+or via setup.py
+
+    python setup.py install
+
 
 Usage
 ------
