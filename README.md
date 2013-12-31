@@ -1,7 +1,7 @@
 CommonRegex
 ===========
 
-Find all times, dates, links, phone numbers, emails, ip addresses, and prices in a string. 
+Find all times, dates, links, phone numbers, emails, ip addresses, prices, and hex colors in a string. 
 I did the hard work so you don't have to.
 
 Pull requests welcome!
@@ -41,6 +41,14 @@ Alternatively, you can generate a single CommonRegex instance and use it to pars
     >>> parser = CommonRegex()
     >>> parser.times("When are you free?  Do you want to meet up for coffee at 4:00?")
     ['4:00']
+    
+Finally, all regular expressions used are publicly exposed.
+
+    >>> from commonregex import email
+    >>> import re
+    >>> text = "...get in touch with my associate at harold.smith@gmail.com"
+    >>> re.sub(email, "anon@example.com", text)
+    '...get in touch with my associate at anon@example.com'
     
 Please note that this module is currently English/US specific.
 
