@@ -1,5 +1,12 @@
 import re
 
+date = u'(?:(?<!\:)(?<!\:\d)[0-3]?\d(?:st|nd|rd|th)?\s+(?:of\s+)?(?:jan\.?|january|feb\.?|february|mar\.?|march|apr\.?|april|may|jun\.?|june|jul\.?|july|aug\.?|august|sep\.?|september|oct\.?|october|nov\.?|november|dec\.?|december)|(?:jan\.?|january|feb\.?|february|mar\.?|march|apr\.?|april|may|jun\.?|june|jul\.?|july|aug\.?|august|sep\.?|september|oct\.?|october|nov\.?|november|dec\.?|december)\s+(?<!\:)(?<!\:\d)[0-3]?\d(?:st|nd|rd|th)?)(?:\,)?\s*(?:\d{4})?|[0-3]?\d[-/][0-3]?\d[-/]\d{2,4}'
+time = u'\d{1,2}:\d{2} ?(?:[ap]\.?m\.?)?|\d[ap]\.?m\.?'
+phone = u'(\d?\W*(?:\(?\d{3}\)?\W*)?\d{3}\W*\d{4})'
+link = u'(?i)((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))'
+email = u"([a-z0-9!#$%&'*+\/=?^_`{|}~-]+@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)"
+ip = u'(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
+money = u"\$\s?[+-]?[0-9]{1,3}(?:,?[0-9])*(?:\.[0-9]{1,2})?"
 
 class CommonRegex:
 
@@ -31,48 +38,45 @@ class CommonRegex:
 
     @_strip
     def dates(self, text=None):
+        global date
         text = text or self.text
-        month_regex = u'(?:jan\.?|january|feb\.?|february|mar\.?|march|apr\.?|april|may|jun\.?|june|jul\.?|july|aug\.?|august|sep\.?|september|oct\.?|october|nov\.?|november|dec\.?|december)'
-        day_regex = u'(?<!\:)(?<!\:\d)[0-3]?\d(?:st|nd|rd|th)?'
-        year_regex = u'\d{4}'
-        date_regex = self._group(self._any(day_regex + u'\s+(?:of\s+)?' + month_regex, month_regex + u'\s+' + day_regex)) + u'(?:\,)?\s*' + self._opt(year_regex) + u'|[0-3]?\d[-/][0-3]?\d[-/]\d{2,4}'
-        return re.findall(date_regex, text, re.IGNORECASE)
+        return re.findall(date, text, re.IGNORECASE)
 
     @_strip
     def times(self, text=None):
+        global time
         text = text or self.text
-        time_regex = u'\d{1,2}:\d{2} ?(?:[ap]\.?m\.?)?|\d[ap]\.?m\.?'
-        return re.findall(time_regex, text, re.IGNORECASE)
+        return re.findall(time, text, re.IGNORECASE)
 
     @_strip
     def phones(self, text=None):
+        global phone
         text = text or self.text
-        phone_regex = u'(\d?\W*(?:\(?\d{3}\)?\W*)?\d{3}\W*\d{4})'
-        return re.findall(phone_regex, text)
+        return re.findall(phone, text)
 
     @_strip
     def links(self, text=None):
+        global link
         text = text or self.text
-        link_regex = u'(?i)((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))'
-        return re.findall(link_regex, text, re.IGNORECASE)
+        return re.findall(link, text, re.IGNORECASE)
 
     @_strip
     def emails(self, text=None):
+        global email
         text = text or self.text
-        email_regex = u"([a-z0-9!#$%&'*+\/=?^_`{|}~-]+@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)"
-        return re.findall(email_regex, text, re.IGNORECASE)
+        return re.findall(email, text, re.IGNORECASE)
 
     @_strip
     def ip(self, text=None):
+        global ip
         text = text or self.text
-        ip_regex = u'(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
-        return re.findall(ip_regex, text)
+        return re.findall(ip, text)
 
     @_strip
     def money(self, text=None):
+        global money
         text = text or self.text
-        money_regexp = u"\$\s?[+-]?[0-9]{1,3}(?:,?[0-9])*(?:\.[0-9]{1,2})?"
-        return re.findall(money_regexp, text)
+        return re.findall(money, text)
 
 if __name__ == "__main__":
     parse = CommonRegex("8:00 5:00AM Jan 9th 2012 8/23/12 www.google.com $4891.75 http://hotmail.com (520) 820 7123, 1-230-241-2422 john_smith@gmail.com 127.0.0.1")
