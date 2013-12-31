@@ -21,6 +21,7 @@ class CommonRegex:
             self.emails   = self.emails()
             self.ip       = self.ip()
             self.money    = self.money()
+            self.hexColor = self.hexColor()
 
     def _opt(self, regex):
         return u'(?:' + regex + u')?'
@@ -78,8 +79,14 @@ class CommonRegex:
         text = text or self.text
         return re.findall(money, text)
 
+    @_strip
+    def hexColor(self, text=None):
+        text = text or self.text
+        hexColor_regex = u'(#(?:[0-9a-fA-F]{8})|#(?:[0-9a-fA-F]{3}){1,2})\\b'
+        return re.findall(hexColor_regex, text)
+
 if __name__ == "__main__":
-    parse = CommonRegex("8:00 5:00AM Jan 9th 2012 8/23/12 www.google.com $4891.75 http://hotmail.com (520) 820 7123, 1-230-241-2422 john_smith@gmail.com 127.0.0.1")
+    parse = CommonRegex("8:00 5:00AM Jan 9th 2012 8/23/12 www.google.com $4891.75 http://hotmail.com (520) 820 7123, 1-230-241-2422 john_smith@gmail.com 127.0.0.1 #e9be4fff ")
     print(parse.dates)
     print(parse.times)
     print(parse.phones)
@@ -87,3 +94,4 @@ if __name__ == "__main__":
     print(parse.emails)
     print(parse.ip)
     print(parse.money)
+    print(parse.hexColor)
