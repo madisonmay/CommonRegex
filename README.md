@@ -52,6 +52,19 @@ Finally, all regular expressions used are publicly exposed.
     
 Please note that this module is currently English/US specific.
 
+Supported Methods/Attributes
+-----------------------------
+
+  - obj.dates, obj.dates()
+  - obj.times, obj.times()
+  - obj.phones, obj.phones()
+  - obj.links, obj.links()
+  - obj.emails, obj.emails()
+  - obj.ip, obj.ip()
+  - obj.ipv6, obj.ipv6()
+  - obj.money, obj.money()
+  - obj.hex_color, obj.hex_color()
+
 CommonRegex Ports:
 ----------------------------------------
 [CommonRegexJS] (https://github.com/talyssonoc/CommonRegexJS)
