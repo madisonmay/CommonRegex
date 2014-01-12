@@ -66,10 +66,11 @@ Supported Methods/Attributes
   - obj.phones, obj.phones()
   - obj.links, obj.links()
   - obj.emails, obj.emails()
-  - obj.ip, obj.ip()
-  - obj.ipv6, obj.ipv6()
-  - obj.money, obj.money()
-  - obj.hex_color, obj.hex_color()
+  - obj.ips, obj.ips()
+  - obj.ipv6s, obj.ipv6s()
+  - obj.prices, obj.prices()
+  - obj.hex_colors, obj.hex_colors()
+  - obj.credit_cards, obj.credit_cards()
 
 CommonRegex Ports:
 ----------------------------------------
