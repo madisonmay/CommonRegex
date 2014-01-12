@@ -1,7 +1,7 @@
 CommonRegex
 ===========
 
-Find all times, dates, links, phone numbers, emails, ip addresses, prices, and hex colors in a string. 
+Find all times, dates, links, phone numbers, emails, ip addresses, prices, hex colors, and credit card numbers in a string. 
 We did the hard work so you don't have to.
 
 Pull requests welcome!
