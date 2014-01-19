@@ -46,7 +46,7 @@ Alternatively, you can generate a single CommonRegex instance and use it to pars
 ['4:00']
 ```
     
-Finally, all regular expressions used are publicly exposed.
+Finally, all regular expressions used are publicly exposed. 
 
 ```python
 >>> from commonregex import email
@@ -55,6 +55,15 @@ Finally, all regular expressions used are publicly exposed.
 >>> re.sub(email, "anon@example.com", text)
 '...get in touch with my associate at anon@example.com'
 ```
+
+```python
+>>> from commonregex import time
+>>> for m in time.finditer("Does 6:00 or 7:00 work better?"):
+>>>     print m.start(), m.group()     
+5 6:00 
+13 7:00 
+```
+
     
 Please note that this module is currently English/US specific.
 
