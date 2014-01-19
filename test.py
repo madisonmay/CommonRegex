@@ -32,8 +32,9 @@ class TestPhones(unittest.TestCase):
         self.parser = CommonRegex()
 
     def test_phones(self):
-        formats = ["12345678900", "1234567890", "1 234 567 8900", "234-567-8900",
-                   "1-234-567-8900", "1.234.567.8900", "5678900", "567-8900"]
+        formats = ["12345678900", "1234567890", "+1 234 567 8900", "234-567-8900",
+                   "1-234-567-8900", "1.234.567.8900", "5678900", "567-8900", 
+                   "(123) 456 7890", "+41 22 730 5989", "(+41) 22 730 5989"]
         for f in formats:
             self.assertEqual(self.parser.phones(f), [f])
 
@@ -49,7 +50,7 @@ class TestLinks(unittest.TestCase):
             self.assertEqual(self.parser.links(f), [f])
 
 if __name__ == '__main__':
-    test_cases = [TestDates, TestTimes, TestPhones, TestLinks]
+    test_cases = [TestDates, TestTimes, TestPhones, TestTimes]
     suites = []
     for case in test_cases:
         suites.append(unittest.TestLoader().loadTestsFromTestCase(case))
