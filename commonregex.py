@@ -31,7 +31,7 @@ class regex:
 
   def __call__(self, *args):
     def regex_method(text=None):
-      return [x.strip() for x in re.findall(self.regex, text or self.obj.text)]
+      return [x.strip() for x in self.regex.findall(text or self.obj.text)]
     return regex_method
 
 class CommonRegex(object):
