@@ -51,11 +51,11 @@ class TestLinks(unittest.TestCase):
         for s in matching:
             self.assertEqual(self.parser.links(s), [s])
         for s in non_matching:
-            self.assertNonEqual(self.parser.links(s), [s])
+            self.assertNotEqual(self.parser.links(s), [s])
 
 
 if __name__ == '__main__':
-    test_cases = [TestDates, TestTimes, TestPhones, TestTimes]
+    test_cases = [TestDates, TestTimes, TestPhones, TestTimes, TestLinks]
     suites = []
     for case in test_cases:
         suites.append(unittest.TestLoader().loadTestsFromTestCase(case))
