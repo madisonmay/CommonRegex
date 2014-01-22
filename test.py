@@ -1,10 +1,15 @@
+# coding: utf-8
 from commonregex import CommonRegex
 import unittest
 
-class TestDates(unittest.TestCase):
+
+class RegexTestCase(unittest.TestCase):
 
     def setUp(self):
         self.parser = CommonRegex()
+
+
+class TestDates(RegexTestCase):
 
     def test_numeric(self):
         matching = ["1-19-14", "1.19.14", "1.19.14", "01.19.14"]
@@ -16,20 +21,16 @@ class TestDates(unittest.TestCase):
         for s in matching:
             self.assertEqual(self.parser.dates(s), [s])
 
-class TestTimes(unittest.TestCase):
 
-    def setUp(self):
-        self.parser = CommonRegex()
+class TestTimes(RegexTestCase):
 
     def test_times(self):
         matching = ["09:45", "9:45", "23:45", "9:00am", "9am", "9:00 A.M.", "9:00 pm"]
         for s in matching:
             self.assertEqual(self.parser.times(s), [s])
 
-class TestPhones(unittest.TestCase):
 
-    def setUp(self):
-        self.parser = CommonRegex()
+class TestPhones(RegexTestCase):
 
     def test_phones(self):
         matching = ["12345678900", "1234567890", "+1 234 567 8900", "234-567-8900",
@@ -39,10 +40,8 @@ class TestPhones(unittest.TestCase):
         for s in matching:
             self.assertEqual(self.parser.phones(s), [s])
 
-class TestLinks(unittest.TestCase):
 
-    def setUp(self):
-        self.parser = CommonRegex()
+class TestLinks(RegexTestCase):
 
     def test_links(self):
         matching = ["www.google.com", "http://www.google.com", "www.google.com/?query=dog"
@@ -54,8 +53,66 @@ class TestLinks(unittest.TestCase):
             self.assertNotEqual(self.parser.links(s), [s])
 
 
+class TestEmails(RegexTestCase):
+
+    def test_emails(self):
+        matching = ["john.smith@gmail.com", "john_smith@gmail.com", "john@example.net"]
+        non_matching = ["john.smith@gmail..com"]
+        for s in matching:
+            self.assertEqual(self.parser.emails(s), [s]) 
+        for s in non_matching:
+            self.assertNotEqual(self.parser.emails(s), [s])
+
+
+class TestIPs(RegexTestCase):
+
+    def test_ips(self):
+        matching = ["127.0.0.1", "192.168.1.1", "8.8.8.8"]
+        for s in matching:
+            self.assertEqual(self.parser.ips(s), [s])
+
+
+class TestIPv6s(RegexTestCase):
+
+    def test_ipv6s(self):
+        matching = ["fe80:0000:0000:0000:0204:61ff:fe9d:f156", "fe80:0:0:0:204:61ff:fe9d:f156",
+                    "fe80::204:61ff:fe9d:f156", "fe80:0000:0000:0000:0204:61ff:254.157.241.86",
+                    "fe80:0:0:0:0204:61ff:254.157.241.86", "fe80::204:61ff:254.157.241.86", "::1"]
+        for s in matching:
+            self.assertEqual(self.parser.ipv6s(s), [s])
+
+
+class TestPrices(RegexTestCase):
+
+    def test_prices(self):
+        matching = ["$1.23", "$1", "$1,000", "$10,000.00"]
+        non_matching = ["$1,10,0", "$100.000"]
+        for s in matching:
+            self.assertEqual(self.parser.prices(s), [s])
+        for s in non_matching:
+            self.assertNotEqual(self.parser.prices(s), [s])
+
+
+class TestHexColors(RegexTestCase):
+
+    def test_hexcolors(self):
+        matching = ["#fff", "#123", "#4e32ff", "#12345678"]
+        for s in matching:
+            self.assertEqual(self.parser.hex_colors(s), [s])
+
+
+class TestCreditCards(RegexTestCase):
+
+    def test_creditcards(self):
+        matching = ["0000-0000-0000-0000", "0123456789012345",
+                    "0000 0000 0000 0000", "012345678901234"]
+        for s in matching:
+            self.assertEqual(self.parser.credit_cards(s), [s])
+
+
 if __name__ == '__main__':
-    test_cases = [TestDates, TestTimes, TestPhones, TestTimes, TestLinks]
+    test_cases = [TestDates, TestTimes, TestPhones, TestTimes, TestLinks, TestEmails,
+                  TestIPs, TestIPv6s, TestPrices, TestHexColors, TestCreditCards]
     suites = []
     for case in test_cases:
         suites.append(unittest.TestLoader().loadTestsFromTestCase(case))
