@@ -89,6 +89,8 @@ CommonRegex Ports:
 
 [CommonRegexJava] (https://github.com/talyssonoc/CommonRegexJava)
 
+[CommonRegexCobra] (https://github.com/PurityLake/CommonRegex-Cobra)
+
 License
 -------------
 The MIT License (MIT)
