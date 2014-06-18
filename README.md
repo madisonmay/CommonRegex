@@ -80,6 +80,7 @@ Supported Methods/Attributes
   - obj.prices, obj.prices()
   - obj.hex_colors, obj.hex_colors()
   - obj.credit_cards, obj.credit_cards()
+  - obj.btc_addresses, obj.btc_addresses()
 
 CommonRegex Ports:
 ----------------------------------------
