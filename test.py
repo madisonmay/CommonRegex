@@ -109,10 +109,22 @@ class TestCreditCards(RegexTestCase):
         for s in matching:
             self.assertEqual(self.parser.credit_cards(s), [s])
 
+class TestBTCAddresses(RegexTestCase):
+
+    def test_btc_addresses(self):
+        matching = ["1LgqButDNV2rVHe9DATt6WqD8tKZEKvaK2", "19P6EYhu6kZzRy9Au4wRRZVE8RemrxPbZP",
+                    "1bones8KbQge9euDn523z5wVhwkTP3uc1", "1Bow5EMqtDGV5n5xZVgdpRPJiiDK6XSjiC"]
+        non_matching = ["2LgqButDNV2rVHe9DATt6WqD8tKZEKvaK2", "19Ry9Au4wRRZVE8RemrxPbZP",
+                        "1bones8KbQge9euDn523z5wVhwkTP3uc12939", "1Bow5EMqtDGV5n5xZVgdpR"]
+        for s in matching:
+            self.assertEqual(self.parser.btc_addresses(s), [s])
+        for s in non_matching:
+            self.assertNotEqual(self.parser.prices(s), [s])
+
 
 if __name__ == '__main__':
     test_cases = [TestDates, TestTimes, TestPhones, TestTimes, TestLinks, TestEmails,
-                  TestIPs, TestIPv6s, TestPrices, TestHexColors, TestCreditCards]
+                  TestIPs, TestIPv6s, TestPrices, TestHexColors, TestCreditCards, TestBTCAddresses]
     suites = []
     for case in test_cases:
         suites.append(unittest.TestLoader().loadTestsFromTestCase(case))

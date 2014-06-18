@@ -12,17 +12,19 @@ ipv6        = re.compile(u'\s*(?!.*::.*::)(?:(?!:)|:(?=:))(?:[0-9a-f]{0,4}(?:(?<
 price       = re.compile(u'[$]\s?[+-]?[0-9]{1,3}(?:(?:,?[0-9]{3}))*(?:\.[0-9]{1,2})?')
 hex_color   = re.compile(u'(#(?:[0-9a-fA-F]{8})|#(?:[0-9a-fA-F]{3}){1,2})\\b')
 credit_card = re.compile(u'((?:(?:\\d{4}[- ]?){3}\\d{4}|\\d{15,16}))(?![\\d])')
+btc_address = re.compile(u'(?<![a-km-zA-HJ-NP-Z0-9])[13][a-km-zA-HJ-NP-Z0-9]{26,33}(?![a-km-zA-HJ-NP-Z0-9])')
 
-regexes = {"dates"        : date,
-           "times"        : time, 
-           "phones"       : phone,
-           "links"        : link,
-           "emails"       : email,
-           "ips"          : ip,
-           "ipv6s"        : ipv6,
-           "prices"       : price,
-           "hex_colors"   : hex_color,
-           "credit_cards" : credit_card}
+regexes = {"dates"         : date,
+           "times"         : time, 
+           "phones"        : phone,
+           "links"         : link,
+           "emails"        : email,
+           "ips"           : ip,
+           "ipv6s"         : ipv6,
+           "prices"        : price,
+           "hex_colors"    : hex_color,
+           "credit_cards"  : credit_card,
+           "btc_addresses" : btc_address }
 
 class regex:
 
