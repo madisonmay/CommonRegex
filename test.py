@@ -119,12 +119,24 @@ class TestBTCAddresses(RegexTestCase):
         for s in matching:
             self.assertEqual(self.parser.btc_addresses(s), [s])
         for s in non_matching:
-            self.assertNotEqual(self.parser.prices(s), [s])
+            self.assertNotEqual(self.parser.btc_addresses(s), [s])
+
+class TestStreetAddresses(RegexTestCase):
+
+    def test_street_addresses(self):
+        matching = ["101 main st.", "504 parkwood drive", "3 elm boulevard"]
+        non_matching = ["101 main straight"]
+
+        for s in matching:
+            self.assertEqual(self.parser.street_addresses(s), [s])
+        for s in non_matching:
+            self.assertNotEqual(self.parser.street_addresses(s), [s])
 
 
 if __name__ == '__main__':
-    test_cases = [TestDates, TestTimes, TestPhones, TestTimes, TestLinks, TestEmails,
-                  TestIPs, TestIPv6s, TestPrices, TestHexColors, TestCreditCards, TestBTCAddresses]
+    test_cases = [TestDates, TestTimes, TestPhones, TestTimes, TestLinks, TestEmails, TestIPs, 
+                  TestIPv6s, TestPrices, TestHexColors, TestCreditCards, TestBTCAddresses,
+                  TestStreetAddresses]
     suites = []
     for case in test_cases:
         suites.append(unittest.TestLoader().loadTestsFromTestCase(case))
