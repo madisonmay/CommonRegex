@@ -81,6 +81,7 @@ Supported Methods/Attributes
   - obj.hex_colors, obj.hex_colors()
   - obj.credit_cards, obj.credit_cards()
   - obj.btc_addresses, obj.btc_addresses()
+  - obj.street_addresses, obj.street_addresses()
 
 CommonRegex Ports:
 ----------------------------------------
