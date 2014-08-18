@@ -16,7 +16,7 @@ btc_address    = re.compile(u'(?<![a-km-zA-HJ-NP-Z0-9])[13][a-km-zA-HJ-NP-Z0-9]{
 street_address = re.compile(u'\d{1,4} [\w\s]{1,20}(?:street|st|avenue|ave|road|rd|highway|hwy|square|sq|traill|trl|drive|dr|court|ct|parkway|pkwy)\W?(?=\s|$)', re.IGNORECASE)
 
 regexes = {"dates"            : date,
-           "times"            : time, 
+           "times"            : time,
            "phones"           : phone,
            "links"            : link,
            "emails"           : email,

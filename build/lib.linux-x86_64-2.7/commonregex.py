@@ -13,7 +13,7 @@ price          = re.compile(u'[$]\s?[+-]?[0-9]{1,3}(?:(?:,?[0-9]{3}))*(?:\.[0-9]
 hex_color      = re.compile(u'(#(?:[0-9a-fA-F]{8})|#(?:[0-9a-fA-F]{3}){1,2})\\b')
 credit_card    = re.compile(u'((?:(?:\\d{4}[- ]?){3}\\d{4}|\\d{15,16}))(?![\\d])')
 btc_address    = re.compile(u'(?<![a-km-zA-HJ-NP-Z0-9])[13][a-km-zA-HJ-NP-Z0-9]{26,33}(?![a-km-zA-HJ-NP-Z0-9])')
-street_address = re.compile(u'\d{1,4} [\w\s]{1,20}(?:st|street|ave|avenue|rd|road|hwy|highway|sq|square|trl|trail|dr|drive|ct|court|pkwy|parkway)\W?(?=[\s^])', re.IGNORECASE)
+street_address = re.compile(u'\d{1,4} [\w\s]{1,20}(?:street|st|avenue|ave|road|rd|highway|hwy|square|sq|traill|trl|drive|dr|court|ct|parkway|pkwy)\W?(?=\s|$)', re.IGNORECASE)
 
 regexes = {"dates"            : date,
            "times"            : time, 

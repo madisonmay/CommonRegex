@@ -34,7 +34,7 @@ class TestPhones(RegexTestCase):
 
     def test_phones(self):
         matching = ["12345678900", "1234567890", "+1 234 567 8900", "234-567-8900",
-                   "1-234-567-8900", "1.234.567.8900", "5678900", "567-8900", 
+                   "1-234-567-8900", "1.234.567.8900", "5678900", "567-8900",
                    "(123) 456 7890", "+41 22 730 5989", "(+41) 22 730 5989",
                    "+442345678900"]
         for s in matching:
@@ -59,7 +59,7 @@ class TestEmails(RegexTestCase):
         matching = ["john.smith@gmail.com", "john_smith@gmail.com", "john@example.net"]
         non_matching = ["john.smith@gmail..com"]
         for s in matching:
-            self.assertEqual(self.parser.emails(s), [s]) 
+            self.assertEqual(self.parser.emails(s), [s])
         for s in non_matching:
             self.assertNotEqual(self.parser.emails(s), [s])
 
@@ -124,17 +124,18 @@ class TestBTCAddresses(RegexTestCase):
 class TestStreetAddresses(RegexTestCase):
 
     def test_street_addresses(self):
-        matching = ["101 main st.", "504 parkwood drive", "3 elm boulevard"]
+        matching = ["checkout the new place at 101 main st.", "504 parkwood drive", "3 elm boulevard",
+                    "500 elm street "]
         non_matching = ["101 main straight"]
 
         for s in matching:
-            self.assertEqual(self.parser.street_addresses(s), [s])
+            self.assertTrue(self.parser.street_addresses(s))
         for s in non_matching:
-            self.assertNotEqual(self.parser.street_addresses(s), [s])
+            self.assertFalse(self.parser.street_addresses(s))
 
 
 if __name__ == '__main__':
-    test_cases = [TestDates, TestTimes, TestPhones, TestTimes, TestLinks, TestEmails, TestIPs, 
+    test_cases = [TestDates, TestTimes, TestPhones, TestTimes, TestLinks, TestEmails, TestIPs,
                   TestIPv6s, TestPrices, TestHexColors, TestCreditCards, TestBTCAddresses,
                   TestStreetAddresses]
     suites = []
