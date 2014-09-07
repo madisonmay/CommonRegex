@@ -93,6 +93,8 @@ CommonRegex Ports:
 
 [CommonRegexCobra] (https://github.com/PurityLake/CommonRegex-Cobra)
 
+[CommonRegexDart] (https://github.com/aufdemrand/CommonRegexDart)
+
 License
 -------------
 The MIT License (MIT)
