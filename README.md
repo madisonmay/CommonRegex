@@ -95,5 +95,7 @@ CommonRegex Ports:
 
 [CommonRegexDart] (https://github.com/aufdemrand/CommonRegexDart)
 
+[CommonRegexRuby] (https://github.com/talyssonoc/CommonRegexRuby)
+
 [![Analytics](https://ga-beacon.appspot.com/UA-46923950-1/CommonRegex/readme?pixel)](https://github.com/igrigorik/ga-beacon)
 
