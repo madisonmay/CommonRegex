@@ -70,18 +70,18 @@ Please note that this module is currently English/US specific.
 Supported Methods/Attributes
 -----------------------------
 
-  - obj.dates, obj.dates()
-  - obj.times, obj.times()
-  - obj.phones, obj.phones()
-  - obj.links, obj.links()
-  - obj.emails, obj.emails()
-  - obj.ips, obj.ips()
-  - obj.ipv6s, obj.ipv6s()
-  - obj.prices, obj.prices()
-  - obj.hex_colors, obj.hex_colors()
-  - obj.credit_cards, obj.credit_cards()
-  - obj.btc_addresses, obj.btc_addresses()
-  - obj.street_addresses, obj.street_addresses()
+  - `obj.dates`, `obj.dates()`
+  - `obj.times`, `obj.times()`
+  - `obj.phones`, `obj.phones()`
+  - `obj.links`, `obj.links()`
+  - `obj.emails`, `obj.emails()`
+  - `obj.ips`, `obj.ips()`
+  - `obj.ipv6s`, `obj.ipv6s()`
+  - `obj.prices`, `obj.prices()`
+  - `obj.hex_colors`, `obj.hex_colors()`
+  - `obj.credit_cards`, `obj.credit_cards()`
+  - `obj.btc_addresses`, `obj.btc_addresses()`
+  - `obj.street_addresses`, `obj.street_addresses()`
 
 CommonRegex Ports:
 ----------------------------------------
