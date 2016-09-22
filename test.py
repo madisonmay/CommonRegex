@@ -40,6 +40,18 @@ class TestPhones(RegexTestCase):
         for s in matching:
             self.assertEqual(self.parser.phones(s), [s])
 
+class TestPhonesWithExts(RegexTestCase):
+
+    def test_phones_with_extensions(self):
+        matching = ["(523)222-8888 ext 527", "(523)222-8888x623", "(523)222-8888 x623",
+                    "(523)222-8888 x 623", "(523)222-8888EXT623", "523-222-8888EXT623",
+                    "(523) 222-8888 x 623"]
+        non_matching = ["222-5555", "222-8888 x 623", '333-333-5555 dial 3']
+        for s in matching:
+            self.assertEqual(self.parser.phones_with_exts(s), [s])
+        for s in non_matching:
+            self.assertNotEqual(self.parser.links(s), [s])
+
 
 class TestLinks(RegexTestCase):
 

@@ -24,7 +24,7 @@ Usage
 >>> from commonregex import CommonRegex
 >>> parsed_text = CommonRegex("""John, please get that article on www.linkedin.com to me by 5:00PM 
                                on Jan 9th 2012. 4:00 would be ideal, actually. If you have any 
-                               questions, You can reach me at (519)-236-2723 or get in touch with
+                               questions, You can reach me at (519)-236-2723x341 or get in touch with
                                my associate at harold.smith@gmail.com""")
 >>> parsed_text.times
 ['5:00PM', '4:00']
@@ -34,6 +34,8 @@ Usage
 ['www.linkedin.com']
 >>> parsed_text.phones
 ['(519)-236-2727']
+>>> parsed_text.phones_with_exts
+['(519)-236-2723x341']
 >>> parsed_text.emails
 ['harold.smith@gmail.com']
 ```
@@ -73,6 +75,7 @@ Supported Methods/Attributes
   - `obj.dates`, `obj.dates()`
   - `obj.times`, `obj.times()`
   - `obj.phones`, `obj.phones()`
+  - `obj.phones_with_exts`, `obj.phones_with_exts()`
   - `obj.links`, `obj.links()`
   - `obj.emails`, `obj.emails()`
   - `obj.ips`, `obj.ips()`
