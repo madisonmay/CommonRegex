@@ -14,21 +14,27 @@ price            = re.compile(u'[$]\s?[+-]?[0-9]{1,3}(?:(?:,?[0-9]{3}))*(?:\.[0-
 hex_color        = re.compile(u'(#(?:[0-9a-fA-F]{8})|#(?:[0-9a-fA-F]{3}){1,2})\\b')
 credit_card      = re.compile(u'((?:(?:\\d{4}[- ]?){3}\\d{4}|\\d{15,16}))(?![\\d])')
 btc_address      = re.compile(u'(?<![a-km-zA-HJ-NP-Z0-9])[13][a-km-zA-HJ-NP-Z0-9]{26,33}(?![a-km-zA-HJ-NP-Z0-9])')
-street_address   = re.compile(u'\d{1,4} [\w\s]{1,20}(?:street|st|avenue|ave|road|rd|highway|hwy|square|sq|trail|trl|drive|dr|court|ct|parkway|pkwy|circle|cir|boulevard|blvd)\W?(?=\s|$)', re.IGNORECASE)
+street_address   = re.compile(u'\d{1,4} [\w\s]{1,20}(?:street|st|avenue|ave|road|rd|highway|hwy|square|sq|trail|trl|drive|dr|court|ct|park|parkway|pkwy|circle|cir|boulevard|blvd)\W?(?=\s|$)', re.IGNORECASE)
+zip_code = re.compile(r'\b\d{5}(?:[-\s]\d{4})?')
+po_box = re.compile(r'P\.? ?O\.? Box \d+', re.IGNORECASE)
 
-regexes = {"dates"            : date,
-           "times"            : time,
-           "phones"           : phone,
-           "phones_with_exts" : phones_with_exts,
-           "links"            : link,
-           "emails"           : email,
-           "ips"              : ip,
-           "ipv6s"            : ipv6,
-           "prices"           : price,
-           "hex_colors"       : hex_color,
-           "credit_cards"     : credit_card,
-           "btc_addresses"    : btc_address,
-           "street_addresses" : street_address }
+regexes = {
+  "dates"            : date,
+  "times"            : time,
+  "phones"           : phone,
+  "phones_with_exts" : phones_with_exts,
+  "links"            : link,
+  "emails"           : email,
+  "ips"              : ip,
+  "ipv6s"            : ipv6,
+  "prices"           : price,
+  "hex_colors"       : hex_color,
+  "credit_cards"     : credit_card,
+  "btc_addresses"    : btc_address,
+  "street_addresses" : street_address,
+  "zip_codes"        : zip_code,
+  "po_boxes"         : po_box,
+}
 
 class regex:
 
