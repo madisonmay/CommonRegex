@@ -145,11 +145,33 @@ class TestStreetAddresses(RegexTestCase):
         for s in non_matching:
             self.assertFalse(self.parser.street_addresses(s))
 
+class TestPoBoxes(RegexTestCase):
 
+    def test_po_boxes(self):
+        matching = ["PO Box 123456",
+                    "hey p.o. box 234234 hey"]
+        non_matching = ["101 main straight"]
+        
+
+        for s in matching:
+            self.assertTrue(self.parser.po_boxes(s))
+        for s in non_matching:
+            self.assertFalse(self.parser.po_boxes(s))
+
+class TestZipCodes(RegexTestCase):
+
+    def test_zip_codes(self):
+        matching = ["02540", "02540-4119"]
+        non_matching = ["101 main straight"]
+
+        for s in matching:
+            self.assertTrue(self.parser.zip_codes(s))
+        for s in non_matching:
+            self.assertFalse(self.parser.zip_codes(s))
+            
 if __name__ == '__main__':
-    test_cases = [TestDates, TestTimes, TestPhones, TestTimes, TestLinks, TestEmails, TestIPs,
-                  TestIPv6s, TestPrices, TestHexColors, TestCreditCards, TestBTCAddresses,
-                  TestStreetAddresses]
+    # Auto-detect test classes to reduce friction of adding a new one.
+    test_cases = [clas for name, clas in locals().items() if name.startswith('Test')]
     suites = []
     for case in test_cases:
         suites.append(unittest.TestLoader().loadTestsFromTestCase(case))
