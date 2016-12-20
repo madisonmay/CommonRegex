@@ -162,7 +162,7 @@ class TestZipCodes(RegexTestCase):
 
     def test_zip_codes(self):
         matching = ["02540", "02540-4119"]
-        non_matching = ["101 main straight"]
+        non_matching = ["101 main straight", "123456"]
 
         for s in matching:
             self.assertTrue(self.parser.zip_codes(s))
