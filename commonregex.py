@@ -50,12 +50,22 @@ class regex:
 class CommonRegex(object):
 
     def __init__(self, text=""):
-        self.text = text
+        
+        if text:
+            self.text = text
+        else:
+            print('Input string is empty, Input New String and Try Again')
+            self.text = ' '
 
         for k, v in regexes.items():
           setattr(self, k, regex(self, v)(self))
 
-        if text:
-            for key in regexes.keys():
-                method = getattr(self, key)
-                setattr(self, key, method())
+        for key in regexes.keys():
+            method = getattr(self, key)
+            setattr(self, key, method())
+
+    def append(self, string = "" ):
+        self.text += ' ' + string
+
+    def __str__(self):
+        return self.text
