@@ -64,8 +64,5 @@ class CommonRegex(object):
             method = getattr(self, key)
             setattr(self, key, method())
 
-    def append(self, string = "" ):
-        self.text += ' ' + string
-
     def __str__(self):
         return self.text
