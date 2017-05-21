@@ -171,7 +171,7 @@ class TestZipCodes(RegexTestCase):
             
 if __name__ == '__main__':
     # Auto-detect test classes to reduce friction of adding a new one.
-    test_cases = [clas for name, clas in locals().items() if name.startswith('Test')]
+    test_cases = [clas for name, clas in list(locals().items()) if name.startswith('Test')]
     suites = []
     for case in test_cases:
         suites.append(unittest.TestLoader().loadTestsFromTestCase(case))
