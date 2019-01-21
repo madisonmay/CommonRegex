@@ -100,5 +100,7 @@ CommonRegex Ports:
 
 [CommonRegexRuby] (https://github.com/talyssonoc/CommonRegexRuby)
 
+[CommonRegexPHP] (https://github.com/james2doyle/CommonRegexPHP)
+
 [![Analytics](https://ga-beacon.appspot.com/UA-46923950-1/CommonRegex/readme?pixel)](https://github.com/igrigorik/ga-beacon)
 
