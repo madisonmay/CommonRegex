@@ -15,8 +15,9 @@ hex_color        = re.compile('(#(?:[0-9a-fA-F]{8})|#(?:[0-9a-fA-F]{3}){1,2})\\b
 credit_card      = re.compile('((?:(?:\\d{4}[- ]?){3}\\d{4}|\\d{15,16}))(?![\\d])')
 btc_address      = re.compile('(?<![a-km-zA-HJ-NP-Z0-9])[13][a-km-zA-HJ-NP-Z0-9]{26,33}(?![a-km-zA-HJ-NP-Z0-9])')
 street_address   = re.compile('\d{1,4} [\w\s]{1,20}(?:street|st|avenue|ave|road|rd|highway|hwy|square|sq|trail|trl|drive|dr|court|ct|park|parkway|pkwy|circle|cir|boulevard|blvd)\W?(?=\s|$)', re.IGNORECASE)
-zip_code = re.compile(r'\b\d{5}(?:[-\s]\d{4})?\b')
-po_box = re.compile(r'P\.? ?O\.? Box \d+', re.IGNORECASE)
+zip_code         = re.compile(r'\b\d{5}(?:[-\s]\d{4})?\b')
+po_box           = re.compile(r'P\.? ?O\.? Box \d+', re.IGNORECASE)
+ssn              = re.compile('(?!000|666|333)0*(?:[0-6][0-9][0-9]|[0-7][0-6][0-9]|[0-7][0-7][0-2])[- ](?!00)[0-9]{2}[- ](?!0000)[0-9]{4}')
 
 regexes = {
   "dates"            : date,
@@ -34,6 +35,7 @@ regexes = {
   "street_addresses" : street_address,
   "zip_codes"        : zip_code,
   "po_boxes"         : po_box,
+  "ssn_number"       : ssn
 }
 
 class regex:

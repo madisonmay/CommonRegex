@@ -85,6 +85,9 @@ Supported Methods/Attributes
   - `obj.credit_cards`, `obj.credit_cards()`
   - `obj.btc_addresses`, `obj.btc_addresses()`
   - `obj.street_addresses`, `obj.street_addresses()`
+  - `obj.zip_codes`, `obj.zip_codes()`
+  - `obj.po_boxes`, `obj.po_boxes()`
+  - `obj.ssn_number`, `obj.ssn_number()`
 
 CommonRegex Ports:
 ----------------------------------------

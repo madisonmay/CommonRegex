@@ -168,6 +168,16 @@ class TestZipCodes(RegexTestCase):
             self.assertTrue(self.parser.zip_codes(s))
         for s in non_matching:
             self.assertFalse(self.parser.zip_codes(s))
+
+class TestSSN(RegexTestCase):
+
+    def test_ssn(self):
+        matching = ["523 23 4566", "523-04-1234"]
+        non_matching = ["774 00 1245", "666-12-7856"]
+        for s in matching:
+            self.assertEqual(self.parser.ssn_number(s), [s])
+        for s in non_matching:
+            self.assertFalse(self.parser.ssn_number(s), [s])
             
 if __name__ == '__main__':
     # Auto-detect test classes to reduce friction of adding a new one.
