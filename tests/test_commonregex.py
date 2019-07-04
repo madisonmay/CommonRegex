@@ -168,13 +168,3 @@ class TestZipCodes(RegexTestCase):
             self.assertTrue(self.parser.zip_codes(s))
         for s in non_matching:
             self.assertFalse(self.parser.zip_codes(s))
-            
-if __name__ == '__main__':
-    # Auto-detect test classes to reduce friction of adding a new one.
-    test_cases = [clas for name, clas in list(locals().items()) if name.startswith('Test')]
-    suites = []
-    for case in test_cases:
-        suites.append(unittest.TestLoader().loadTestsFromTestCase(case))
-
-    all_tests = unittest.TestSuite(suites)
-    unittest.TextTestRunner(verbosity=2).run(all_tests)
