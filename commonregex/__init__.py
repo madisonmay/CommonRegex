@@ -1,6 +1,12 @@
 # coding: utf-8
+from functools import wraps
 from types import MethodType
 import re
+import functools
+
+import spacy
+from spacy.tokens import Doc, Span, Token
+
 
 date             = re.compile('(?:(?<!\:)(?<!\:\d)[0-3]?\d(?:st|nd|rd|th)?\s+(?:of\s+)?(?:jan\.?|january|feb\.?|february|mar\.?|march|apr\.?|april|may|jun\.?|june|jul\.?|july|aug\.?|august|sep\.?|september|oct\.?|october|nov\.?|november|dec\.?|december)|(?:jan\.?|january|feb\.?|february|mar\.?|march|apr\.?|april|may|jun\.?|june|jul\.?|july|aug\.?|august|sep\.?|september|oct\.?|october|nov\.?|november|dec\.?|december)\s+(?<!\:)(?<!\:\d)[0-3]?\d(?:st|nd|rd|th)?)(?:\,)?\s*(?:\d{4})?|[0-3]?\d[-\./][0-3]?\d[-\./]\d{2,4}', re.IGNORECASE)
 time             = re.compile('\d{1,2}:\d{2} ?(?:[ap]\.?m\.?)?|\d[ap]\.?m\.?', re.IGNORECASE)
@@ -36,26 +42,19 @@ regexes = {
   "po_boxes"         : po_box,
 }
 
-class regex:
 
-  def __init__(self, obj, regex):
-    self.obj = obj
-    self.regex = regex
-
-  def __call__(self, *args):
-    def regex_method(text=None):
-      return [x.strip() for x in self.regex.findall(text or self.obj.text)]
-    return regex_method
-
-class CommonRegex(object):
-
-    def __init__(self, text=""):
+class Document(object):
+    def apply_regex(self, regex):
+        return []
+        
+    def __init__(self, text=None):
         self.text = text
 
-        for k, v in list(regexes.items()):
-          setattr(self, k, regex(self, v)(self))
+    def __getattr__(self, key):
+        if key in regexes:
+            return [text.strip() for text in regexes[key].findall(self.text)]
+        return super().__getattr__(key)
+  
 
-        if text:
-            for key in list(regexes.keys()):
-                method = getattr(self, key)
-                setattr(self, key, method())
+# For backwards compatability
+CommonRegex = Document

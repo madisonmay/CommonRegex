@@ -39,18 +39,12 @@ Usage
 >>> parsed_text.emails
 ['harold.smith@gmail.com']
 ```
-    
-Alternatively, you can generate a single CommonRegex instance and use it to parse multiple segments of text.
 
-```python
->>> parser = CommonRegex()
->>> parser.times("When are you free?  Do you want to meet up for coffee at 4:00?")
-['4:00']
-```
+Regexes are applied lazily, so the cost of running the regex on the document will only be incurred once the attribute is accessed.
     
-Finally, all regular expressions used are publicly exposed. 
+In addition, all regular expressions used are publicly exposed for use.
 
-```python
+```python3
 >>> from commonregex import email
 >>> import re
 >>> text = "...get in touch with my associate at harold.smith@gmail.com"
@@ -58,7 +52,7 @@ Finally, all regular expressions used are publicly exposed.
 '...get in touch with my associate at anon@example.com'
 ```
 
-```python
+```python3
 >>> from commonregex import time
 >>> for m in time.finditer("Does 6:00 or 7:00 work better?"):
 >>>     print m.start(), m.group()     
@@ -66,6 +60,17 @@ Finally, all regular expressions used are publicly exposed.
 13 7:00 
 ```
 
+Finally, you can use commonregex to add custom extensions to `spacy.Doc` objects.
+
+```python3
+>>> import spacy
+>>> import commonregex.spacy_ext
+>>> commonregex.spacy_ext.apply_extensions()
+>>> NLP = spacy.load('en')
+>>> doc = NLP("See you at 5:30!")
+>>> print(doc._.times[0])
+[5;30] # `spacy.Span` instance
+```
     
 Please note that this module is currently English/US specific.
 

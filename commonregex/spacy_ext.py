@@ -45,9 +45,7 @@ def get_regex(doc, regex):
                 if not span_start:
                     # create new span
                     span_start = token.i
-                else:
-                    # extend existing span
-                    span_end = token.i + 1
+                span_end = token.i + 1
             else:
                 if span_start and span_end:
                     spans.append(doc[span_start:span_end])
@@ -81,7 +79,7 @@ def get_end_char_idx(span):
     return span[-1].idx + len(span[-1].text)
 
 
-def add_commonregex_extensions():
+def apply_extensions():
     for regex_name, regex in regexes.items():
         Doc.set_extension(regex_name, getter=functools.partial(get_regex, regex=regex))
 
@@ -98,6 +96,6 @@ if __name__ == "__main__":
         "questions, You can reach me at (519)-236-2723x341 or get in touch with "
         "my associate at harold.smith@gmail.com"
     )
-    add_commonregex_extensions()
+    apply_extensions()
     doc = NLP(text)
     import ipdb; ipdb.set_trace()

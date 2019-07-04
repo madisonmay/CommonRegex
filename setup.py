@@ -7,7 +7,7 @@ REQUIREMENTS = [
 
 setup(
     name="commonregex",
-    packages=find_packages(),
+    packages=['commonregex'],
     version="2.0.0",
     install_requires=REQUIREMENTS,
 )
