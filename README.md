@@ -91,6 +91,8 @@ Supported Methods/Attributes
 
 CommonRegex Ports:
 ----------------------------------------
+[CommonRegexRust](https://github.com/hskang9/CommonRegexRust)
+
 [CommonRegexJS] (https://github.com/talyssonoc/CommonRegexJS)
 
 [CommonRegexScala] (https://github.com/everpeace/CommonRegexScala)    
