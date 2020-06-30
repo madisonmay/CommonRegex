@@ -12,7 +12,7 @@ class RegexTestCase(unittest.TestCase):
 class TestDates(RegexTestCase):
 
     def test_numeric(self):
-        matching = ["1-19-14", "1.19.14", "1.19.14", "01.19.14"]
+        matching = ["1-19-14", "1.19.14", "1.19.14", "01.19.14", "2001-01-01"]
         for s in matching:
             self.assertEqual(self.parser.dates(s), [s])
 
@@ -151,7 +151,7 @@ class TestPoBoxes(RegexTestCase):
         matching = ["PO Box 123456",
                     "hey p.o. box 234234 hey"]
         non_matching = ["101 main straight"]
-        
+
 
         for s in matching:
             self.assertTrue(self.parser.po_boxes(s))
@@ -178,7 +178,17 @@ class TestSSN(RegexTestCase):
             self.assertEqual(self.parser.ssn_number(s), [s])
         for s in non_matching:
             self.assertFalse(self.parser.ssn_number(s), [s])
-            
+
+class TestAddressZip(RegexTestCase):
+
+    def test_address_zip(self):
+        matching = ["3435 hello ave apt 5 Anytown NY USA 50005", "543 test Parkways town CA USA 12345", "5 wonder st. parktown 33333"]
+        non_matching = ["101 main straight 30005", "105 steamroller deaths in year 10000"]
+        for s in matching:
+            self.assertEqual(self.parser.address_with_zip(s), [s])
+        for s in non_matching:
+            self.assertFalse(self.parser.address_with_zip(s), [s])
+
 if __name__ == '__main__':
     # Auto-detect test classes to reduce friction of adding a new one.
     test_cases = [clas for name, clas in list(locals().items()) if name.startswith('Test')]
