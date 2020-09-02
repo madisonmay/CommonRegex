@@ -73,5 +73,5 @@ class CommonRegex(object):
             self.street_addresses = regex(self, street_address)(self)()
             self.zip_codes = regex(self, zip_code)(self)()
             self.po_boxes = regex(self, po_box)(self)()
-            self.ssn_number = regea(self, ssn)(self)()
+            self.ssn_number = regex(self, ssn)(self)()
             
