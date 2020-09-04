@@ -58,6 +58,20 @@ class CommonRegex(object):
           setattr(self, k, regex(self, v)(self))
 
         if text:
-            for key in list(regexes.keys()):
-                method = getattr(self, key)
-                setattr(self, key, method())
+            self.dates = regex(self, date)(self)()
+            self.times = regex(self, time)(self)()
+            self.phones = regex(self, phone)(self)()
+            self.phones_with_exts = regex(self, phones_with_exts)(self)()
+            self.links = regex(self, link)(self)()
+            self.emails = regex(self, email)(self)()
+            self.ips = regex(self, ip)(self)()
+            self.ipv6s = regex(self, ipv6)(self)()
+            self.prices = regex(self, price)(self)()
+            self.hex_colors = regex(self, hex_color)(self)()
+            self.credit_cards = regex(self, credit_card)(self)()
+            self.btc_addresses = regex(self, btc_address)(self)()
+            self.street_addresses = regex(self, street_address)(self)()
+            self.zip_codes = regex(self, zip_code)(self)()
+            self.po_boxes = regex(self, po_box)(self)()
+            self.ssn_number = regex(self, ssn)(self)()
+            
