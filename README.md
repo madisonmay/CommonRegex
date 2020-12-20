@@ -1,7 +1,7 @@
 CommonRegex
 ===========
 
-Find all times, dates, links, phone numbers, emails, ip addresses, prices, hex colors, and credit card numbers in a string. 
+Find all times, dates, links, phone numbers, emails, ip addresses, mac addresses, prices, hex colors, and credit card numbers in a string. 
 We did the hard work so you don't have to.
 
 Pull requests welcome!
@@ -80,6 +80,7 @@ Supported Methods/Attributes
   - `obj.emails`, `obj.emails()`
   - `obj.ips`, `obj.ips()`
   - `obj.ipv6s`, `obj.ipv6s()`
+  - `obj.mac_addresses`, `obj.mac_addresses()`
   - `obj.prices`, `obj.prices()`
   - `obj.hex_colors`, `obj.hex_colors()`
   - `obj.credit_cards`, `obj.credit_cards()`
