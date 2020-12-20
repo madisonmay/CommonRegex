@@ -94,6 +94,19 @@ class TestIPv6s(RegexTestCase):
             self.assertEqual(self.parser.ipv6s(s), [s])
 
 
+class TestMacAddresses(RegexTestCase):
+
+    def test_mac_addresses(self):
+        matching = ["01-23-45-67-89-AB", "FE:23:45:67:89:ab", "0123.4567.89aB"]
+        non_matching = ["01-23-45-67-89-FG", "GF:23:45:67:89:AB", "G123.4567.89AB",
+                        "101-23-45-67-89-AA", "1FF:23:45:67:89:AB", "F123.4567.89ABC",
+                        "1123-45-67-89-AA", "11:23::45:67:89:AB", "F123..4567.1111"]
+        for s in matching:
+            self.assertEqual(self.parser.mac_addresses(s), [s])
+        for s in non_matching:
+            self.assertNotEqual(self.parser.mac_addresses(s), [s])
+
+
 class TestPrices(RegexTestCase):
 
     def test_prices(self):
